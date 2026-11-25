@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ibrox Chore Rota!</title>
+<style>
+html {
+	color: white;
+	font-family: Tahoma;
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+table, th, td {
+	border: 1px solid white;
+	border-collapse: collapse;
+	color: white;
+}
+</style>
+</head>
+<body style="background-color:Black">
+<h1 class="center" style="color:White">Ibrox Chore Rota!</h1>
+<p id="today" class="center"></p>
+<p id="diff" class="center"></p>
+<p id="list" class="center"></p>
+<div class="center">
+<table style="width:40%">
+<tr>
+	<td>Clean Surfaces</td>
+	<td id="surf"></td>
+</tr>
+<tr>
+	<td>Replace Bin Liner</td>
+	<td id="line"></td>
+</tr>
+<tr>
+	<td>Take Bins Out</td>
+	<td id="out"></td>
+</tr>
+<tr>
+	<td>Vacuum Kitchen</td>
+	<td id="vac"></td>
+</tr>
+<tr>
+	<td>No Chores!</td>
+	<td id="no1"></td>
+</tr>
+<tr>
+	<td>No Chores!</td>
+	<td id="no2"></td>
+</tr>
+</table>
+</div>
+<script>
+	function datediff(first, second) {
+		let daysPassed = Math.round((second - first) / (1000 * 60 * 60 * 24));
+		return Math.floor(daysPassed / 7);
+	}
+
+	let people = ["Zoufia", "Honey", "Isla", "Piper", "Theo", "Rory"];
+	const currentDate = new Date();
+	const startWeek = new Date("2026-11-24");
+
+	const difference = datediff(startWeek, currentDate);
+
+	if (difference > 0) {
+		let i = 0;
+		while (i < difference) {
+			people.unshift(people[5]);
+			people.pop(people[6]);
+			i++;
+		}
+	}
+	
+	document.getElementById("today").innerHTML = currentDate.toDateString();
+
+	document.getElementById("surf").innerHTML = people[0];
+	document.getElementById("line").innerHTML = people[1];
+	document.getElementById("out").innerHTML = people[2];
+	document.getElementById("vac").innerHTML = people[3];
+	document.getElementById("no1").innerHTML = people[4];
+	document.getElementById("no2").innerHTML = people[5];
+</script>
+</body>
+</html>
